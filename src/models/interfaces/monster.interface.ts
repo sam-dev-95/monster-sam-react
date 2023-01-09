@@ -8,3 +8,12 @@ export interface Monster {
   type: string;
   imageUrl: string;
 }
+
+export interface WinnerErrorMsg {
+  message: string;
+}
+
+export interface Winner {
+  winner: Monster;
+  tie: boolean;
+}

@@ -18,4 +18,23 @@ describe('Monsters Service', () => {
       monstersData.monsters[1],
     ]);
   });
+
+  it('should return the winner data', async () => {
+    jest
+      .spyOn(MonsterService, 'getWinner')
+      .mockResolvedValue({
+        winner: monstersData.monsters[1],
+        tie: false
+      });
+    const mockIds = {
+      monster1Id: monstersData.monsters[0].id,
+      monster2Id: monstersData.monsters[1].id
+    };
+
+    const response = await MonsterService.getWinner(mockIds);
+    expect(response).toEqual({
+      winner: monstersData.monsters[1],
+      tie: false
+    })
+  });
 });
