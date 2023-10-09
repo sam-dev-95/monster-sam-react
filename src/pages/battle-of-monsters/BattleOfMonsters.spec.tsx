@@ -7,12 +7,8 @@ import monstersData from '../../../data/monsters.json'
 import { store } from '../../app/store'
 
 const battleOfMonstersFactory = async () => {
-    mockFetch.mockResponse(req => {
-        if (req.url.includes('monsters')) {
-            return Promise.resolve(JSON.stringify(monstersData.monsters))
-        }
-
-        return Promise.reject(new Error('not mapped url'))
+    mockFetch.mockResponse(() => {
+        return Promise.resolve(JSON.stringify(monstersData.monsters))
     })
     render(
         <Provider store={store}>
